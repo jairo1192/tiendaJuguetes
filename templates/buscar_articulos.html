@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+   Busqueda Articulos
+{% endblock %}
+
+{% block tittlePage %}<h1>Busqueda de Articulos </h1>{% endblock %}
+
+{% block body %}
+
+    <form action="" method="GET">
+        <input type="text" name="txtBusqueda"/>
+        <input type="submit" value="buscar" />
+    </form>
+
+    {% if msj %}
+        <h3>{{ msj }}</h3>
+    {% endif %}
+
+    {% if articulos %}
+        <table>
+              <thead>
+              <tbody>
+
+                        {% for item in articulos %}
+                            <tr>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.precio }}</td>
+                                <td>{{ item.tipo.nombre }}</td>
+                                <td>
+                                    <a href="{% url 'modificar_articulo' item.id %}"> editar</a>
+                                    <a href="{% url 'eliminar_articulo' item.id %}"> eliminar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+              </tbody>
+              </thead>
+        </table>
+        <ul>
+            {% for item in articulos %}
+                <li>{{ item.nombre }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+   Nuevos Articulos
+{% endblock %}
+
+<body>
+    {% block tittlePage %}<h1>Modificar Articulo </h1>{% endblock %}
+    {% block body %}
+    <form action="" method="POST">{%  csrf_token %}
+        <table>
+            {{ form.as_table}}
+        </table>
+        <input type="submit" value="Modificar"/>
+    </form>
+
+      {% if msj %}
+        <h3>{{ msj }}</h3>
+      {% endif %}
+    {% endblock %}
+</body>

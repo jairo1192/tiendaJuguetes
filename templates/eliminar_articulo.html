@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+   Eliminar
+{% endblock %}
+
+<body>
+    {% block tittlePage %}<h1>Eliminar Articulo </h1>{% endblock %}
+    {% block body %}
+    <form action="" method="POST">{%  csrf_token %}
+        <table>
+            {{ form.as_table}}
+        </table>
+        <input type="submit" value="Eliminar"/>
+    </form>
+
+      {% if msj %}
+        <h3>{{ msj }}</h3>
+      {% endif %}
+    {% endblock %}
+</body>
