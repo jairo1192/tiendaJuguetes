@@ -32,6 +32,7 @@ def nuevo_articulo(request):
             a = Articulo(nombre=nombre, precio=precio, tipo=TipoArticulo.objects.get(id=tipo))
             a.save()
             #return HttpResponse("El articulo se ha agregado correctamente")
+            articuloFormulario = ArticuloFormulario()
             mensaje = "El articulo se ha agregado correctamente."
     else:
             articuloFormulario = ArticuloFormulario()

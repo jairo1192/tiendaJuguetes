@@ -39,3 +39,10 @@ class DatosAdmin(models.Model):
     email= models.EmailField()
     telefono = models.CharField(max_length=12)
 
+class Proveedores(models.Model):
+    nombre_empresa= models.CharField(max_length=100)
+    direccion= models.CharField(max_length=200)
+    email= models.EmailField()
+    telefono = models.CharField(max_length=12)
+    persona_contacto = models.CharField(max_length=100)
+    numero_identificacion_fiscal = models.CharField(max_length=15)
