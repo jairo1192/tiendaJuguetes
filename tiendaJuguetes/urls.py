@@ -24,3 +24,5 @@ urlpatterns = [
     path("modificar_articulo/<int:id>", views.modificar_articulo, name = "modificar_articulo"),
     path("eliminar_articulo/<int:id>", views.eliminar_articulo, name = "eliminar_articulo")
 ]
+
+handler404 = "adminPedidos.views.error_404"
