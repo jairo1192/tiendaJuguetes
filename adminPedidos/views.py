@@ -39,6 +39,7 @@ def nuevo_articulo(request):
     return render(request, "nuevo_articulo.html", {"form": articuloFormulario, "msj":mensaje})
 
 def modificar_articulo(request, id):
+    mensaje = "Aqui podras hacer cambios en los articulos agregados."
     id_articulo= Articulo.objects.get(id=id)
     if request.method == "POST":
         articuloFormulario = ArticuloFormulario(request.POST)
@@ -51,21 +52,24 @@ def modificar_articulo(request, id):
             id_articulo.precio = precio
             id_articulo.tipo = TipoArticulo.objects.get(id=tipo)
             id_articulo.save()
-            return HttpResponse("El articulo se ha modificado correctamente")
+            #return HttpResponse("El articulo se ha modificado correctamente")
+            mensaje = "El articulo se ha agregado correctamente."
     else:
         dict_articulo={"nombre": id_articulo.nombre,
                        "precio": id_articulo.precio,
                        "tipo": id_articulo.tipo.id
         }
         articuloFormulario = ArticuloFormulario(dict_articulo)
-    return render(request, "modificar_articulo.html", {"form": articuloFormulario})
+    return render(request, "modificar_articulo.html", {"form": articuloFormulario, "msj":mensaje})
 
 def eliminar_articulo(request, id):
+    mensaje = "Aqui podras eliminar los articulos agregados que desees."
     id_articulo = Articulo.objects.get(id=id)
     if request.method == "POST":
         if id_articulo:
             id_articulo.delete()
             return HttpResponse("El articulo se ha eliminado correctamente")
+            #mensaje = "El articulo se ha eliminado correctamente."
     else:
         dict_articulo = {"nombre": id_articulo.nombre,
                          "precio": id_articulo.precio,
